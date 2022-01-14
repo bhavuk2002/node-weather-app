@@ -72,7 +72,7 @@ app.get('/weather', (req, res) => {
             )
         }
     
-        forecast( latitude, longitude, (error, {wheaterDescription, CurrentTemp, feelsLike}) => {
+        forecast( latitude, longitude, (error, {wheaterDescription, CurrentTemp, humidity, windSpeed, feelsLike}) => {
             
             if(error){
                 return res.send(
@@ -84,7 +84,7 @@ app.get('/weather', (req, res) => {
 
             res.send(
                 {
-                    forecast: 'It is ' + wheaterDescription + '. Temperature is ' + CurrentTemp + ' but it feels like ' + feelsLike + ' degree out.',
+                    forecast: 'Its ' + wheaterDescription + ' outside. Temperature is ' + CurrentTemp + ' degrees out, but it feels like ' + feelsLike + '. Humidity is ' + humidity + '%. Wind is blowing at ' + windSpeed + ' km/h.',
                     location: location
                 }
             )
